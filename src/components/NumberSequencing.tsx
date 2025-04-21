@@ -12,7 +12,8 @@ interface NumberSequencingProps {
 
 const NumberSequencing = ({ selectedNumbers, onSequenceCompleted, onBack }: NumberSequencingProps) => {
   const [sequence, setSequence] = useState<number[]>([]);
-  const remainingNumbers = selectedNumbers.filter(num => !sequence.includes(num));
+  // Now sort remainingNumbers ascending
+  const remainingNumbers = selectedNumbers.filter(num => !sequence.includes(num)).sort((a, b) => a - b);
 
   const handleNumberClick = (number: number) => {
     setSequence([...sequence, number]);
@@ -101,3 +102,4 @@ const NumberSequencing = ({ selectedNumbers, onSequenceCompleted, onBack }: Numb
 };
 
 export default NumberSequencing;
+
