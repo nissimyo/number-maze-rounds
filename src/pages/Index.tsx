@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import NumberSelection from "@/components/NumberSelection";
 import NumberSequencing from "@/components/NumberSequencing";
@@ -43,10 +42,10 @@ const Index = () => {
   const handleContinue = () => {
     // Add the current sequence to completed rounds
     setCompletedRounds([...completedRounds, currentSequence]);
-    // Reset and go back to step 1
-    setSelectedNumbers([]);
+    // Reset current sequence but keep the same selected numbers
     setCurrentSequence([]);
-    setCurrentStep(Step.SELECT_NUMBERS);
+    // Go directly to the sequence creation step
+    setCurrentStep(Step.CREATE_SEQUENCE);
   };
 
   // Handler for finishing the game
@@ -65,6 +64,7 @@ const Index = () => {
   const handleStartNewGame = () => {
     setCompletedRounds([]);
     setSelectedNumbers([]);
+    setCurrentSequence([]);
     setCurrentStep(Step.SELECT_NUMBERS);
   };
 
